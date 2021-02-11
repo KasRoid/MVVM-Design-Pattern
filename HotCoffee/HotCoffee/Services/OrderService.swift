@@ -29,6 +29,7 @@ extension OrderService {
                                         completion(.success(result))
                                     } catch {
                                         completion(.failure(.decodingError))
+                                        print(error)
                                     }
                                    }
         ).resume()

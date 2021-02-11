@@ -13,6 +13,24 @@ class OrdersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        loadOrders()
+    }
+}
+
+// MARK: - Load Data
+extension OrdersTableViewController {
+    final private func loadOrders() {
+        guard let url = URL(string: "https://guarded-retreat-82533.herokuapp.com/orders") else { fatalError() }
+        let resource = Resource<[Order]>(url: url)
+        OrderService.shared.load(resource: resource,
+                                 completion: { result in
+                                    switch result {
+                                    case .success(let orders):
+                                        print(orders)
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                 })
     }
 }
 
@@ -29,11 +47,17 @@ extension OrdersTableViewController {
 
 // MARK: - TableView Setup
 extension OrdersTableViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 100
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var contentConfiguration = cell.defaultContentConfiguration()
+        contentConfiguration.text = "Main Text"
+        contentConfiguration.secondaryText = "Secondary Text"
+        contentConfiguration.prefersSideBySideTextAndSecondaryText = true
+        cell.contentConfiguration = contentConfiguration
+        return cell
     }
 }
 
@@ -42,7 +66,6 @@ extension OrdersTableViewController {
     final private func setUI() {
         setNavigationBar()
         setBasics()
-        setLayouts()
     }
     final private func setNavigationBar() {
         title = "Orders"
@@ -50,9 +73,6 @@ extension OrdersTableViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     final private func setBasics() {
-        
-    }
-    final private func setLayouts() {
-        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 }
