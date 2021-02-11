@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42D7741A25D4BE8C00C9F316 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D7741925D4BE8C00C9F316 /* WebService.swift */; };
+		42D7741F25D4BFCF00C9F316 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D7741E25D4BFCF00C9F316 /* Account.swift */; };
 		42DF20C025D4B5E00043C600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF20BF25D4B5E00043C600 /* AppDelegate.swift */; };
 		42DF20C225D4B5E00043C600 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF20C125D4B5E00043C600 /* SceneDelegate.swift */; };
 		42DF20C925D4B5E10043C600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DF20C825D4B5E10043C600 /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42D7741925D4BE8C00C9F316 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		42D7741E25D4BFCF00C9F316 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		42DF20BC25D4B5E00043C600 /* GoodNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DF20BF25D4B5E00043C600 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DF20C125D4B5E00043C600 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +39,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42D7741825D4BE7C00C9F316 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				42D7741925D4BE8C00C9F316 /* WebService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		42D7741D25D4BFB500C9F316 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				42D7741E25D4BFCF00C9F316 /* Account.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		42DF20B325D4B5E00043C600 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +74,8 @@
 		42DF20BE25D4B5E00043C600 /* GoodNews */ = {
 			isa = PBXGroup;
 			children = (
+				42D7741D25D4BFB500C9F316 /* Models */,
+				42D7741825D4BE7C00C9F316 /* Services */,
 				42DF20D525D4B8470043C600 /* ViewControllers */,
 				42DF20D425D4B83F0043C600 /* Supports */,
 				42DF20CD25D4B5E10043C600 /* Info.plist */,
@@ -151,7 +173,9 @@
 			files = (
 				42DF20C025D4B5E00043C600 /* AppDelegate.swift in Sources */,
 				42DF20D925D4B8A00043C600 /* NewsListTableViewController.swift in Sources */,
+				42D7741A25D4BE8C00C9F316 /* WebService.swift in Sources */,
 				42DF20C225D4B5E00043C600 /* SceneDelegate.swift in Sources */,
+				42D7741F25D4BFCF00C9F316 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

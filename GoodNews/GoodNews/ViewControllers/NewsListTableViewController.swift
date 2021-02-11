@@ -22,7 +22,9 @@ extension NewsListTableViewController {
         setBasics()
     }
     final private func setBasics() {
+        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=kr&apiKey=\(Account.key)")!
         title = "Good News"
         navigationController?.navigationBar.prefersLargeTitles = true
+        WebService.shared.getArticles(url: url)
     }
 }
