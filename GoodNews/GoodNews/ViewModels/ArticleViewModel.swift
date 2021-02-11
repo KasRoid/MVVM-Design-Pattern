@@ -11,6 +11,10 @@ struct ArticleViewModel {
     private let articles: [News.Article]
     private var section: Int?
     private var index: Int?
+    
+    init(articles: [News.Article]) {
+        self.articles = articles
+    }
 }
 
 extension ArticleViewModel {
@@ -27,7 +31,7 @@ extension ArticleViewModel {
 }
 
 extension ArticleViewModel {
-    mutating func setup(section: Int, index: Int) {
+    mutating func configure(section: Int, index: Int) {
         self.section = section
         self.index = index
     }

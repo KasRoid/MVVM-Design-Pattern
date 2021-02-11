@@ -29,7 +29,7 @@ final class ArticleTableViewCell: UITableViewCell {
 }
 
 extension ArticleTableViewCell {
-    func configure(title: String, description: String) {
+    func configure(title: String?, description: String?) {
         titleLabel.text = title
         descriptionLabel.text = description
     }
