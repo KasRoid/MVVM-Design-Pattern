@@ -9,6 +9,9 @@ import UIKit
 
 class OrdersTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    final private var viewModel: OrderViewModel?
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,10 @@ extension OrdersTableViewController {
                                  completion: { result in
                                     switch result {
                                     case .success(let orders):
-                                        print(orders)
+                                        self.viewModel = OrderViewModel(orders: orders)
+                                        DispatchQueue.main.async {
+                                            self.tableView.reloadData()
+                                        }
                                     case .failure(let error):
                                         print(error)
                                     }
@@ -48,13 +54,14 @@ extension OrdersTableViewController {
 // MARK: - TableView Setup
 extension OrdersTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return viewModel?.numberOfRowsInSection() ?? 0
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        viewModel?.configure(index: indexPath.row)
         var contentConfiguration = cell.defaultContentConfiguration()
-        contentConfiguration.text = "Main Text"
-        contentConfiguration.secondaryText = "Secondary Text"
+        contentConfiguration.text = viewModel?.type
+        contentConfiguration.secondaryText = viewModel?.size
         contentConfiguration.prefersSideBySideTextAndSecondaryText = true
         cell.contentConfiguration = contentConfiguration
         return cell
