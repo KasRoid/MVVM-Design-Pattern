@@ -25,6 +25,8 @@ extension NewsListTableViewController {
         let url = URL(string: "https://newsapi.org/v2/top-headlines?country=kr&apiKey=\(Account.key)")!
         title = "Good News"
         navigationController?.navigationBar.prefersLargeTitles = true
-        WebService.shared.getArticles(url: url)
+        WebService.shared.getArticles(url: url, completion: { articles in
+            print(articles)
+        })
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42D7741A25D4BE8C00C9F316 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D7741925D4BE8C00C9F316 /* WebService.swift */; };
 		42D7741F25D4BFCF00C9F316 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D7741E25D4BFCF00C9F316 /* Account.swift */; };
+		42D7742325D4C4F600C9F316 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D7742225D4C4F600C9F316 /* News.swift */; };
 		42DF20C025D4B5E00043C600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF20BF25D4B5E00043C600 /* AppDelegate.swift */; };
 		42DF20C225D4B5E00043C600 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF20C125D4B5E00043C600 /* SceneDelegate.swift */; };
 		42DF20C925D4B5E10043C600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DF20C825D4B5E10043C600 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		42D7741925D4BE8C00C9F316 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		42D7741E25D4BFCF00C9F316 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		42D7742225D4C4F600C9F316 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		42DF20BC25D4B5E00043C600 /* GoodNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DF20BF25D4B5E00043C600 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42DF20C125D4B5E00043C600 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				42D7741E25D4BFCF00C9F316 /* Account.swift */,
+				42D7742225D4C4F600C9F316 /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42D7742325D4C4F600C9F316 /* News.swift in Sources */,
 				42DF20C025D4B5E00043C600 /* AppDelegate.swift in Sources */,
 				42DF20D925D4B8A00043C600 /* NewsListTableViewController.swift in Sources */,
 				42D7741A25D4BE8C00C9F316 /* WebService.swift in Sources */,

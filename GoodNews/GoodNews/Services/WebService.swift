@@ -17,13 +17,19 @@ final class WebService {
 }
 
 extension WebService {
-    final func getArticles(url: URL) {
+    final func getArticles(url: URL, completion: @escaping ([News.Article]) -> Void) {
         URLSession.shared.dataTask(with: url,
                                    completionHandler: { data, response, error in
                                     if let error = error {
-                                        print(error)
+                                        print("DataTask Error: ", error.localizedDescription)
                                     } else if let data = data {
-                                        print(data)
+                                        do {
+                                            let news = try JSONDecoder().decode(News.self, from: data)
+                                            let articles = news.articles
+                                            completion(articles)
+                                        } catch {
+                                            print(error)
+                                        }
                                     }
                                    }
         ).resume()
