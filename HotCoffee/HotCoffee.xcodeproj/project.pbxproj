@@ -21,6 +21,7 @@
 		42B3297B25D5175B0076A939 /* CoffeeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3297A25D5175B0076A939 /* CoffeeSize.swift */; };
 		42B3297E25D5177C0076A939 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3297D25D5177C0076A939 /* Order.swift */; };
 		42B3298225D524730076A939 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3298125D524730076A939 /* OrderViewModel.swift */; };
+		42B3298625D52B030076A939 /* AddOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3298525D52B030076A939 /* AddOrderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		42B3297A25D5175B0076A939 /* CoffeeSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeSize.swift; sourceTree = "<group>"; };
 		42B3297D25D5177C0076A939 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		42B3298125D524730076A939 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		42B3298525D52B030076A939 /* AddOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				42B3298125D524730076A939 /* OrderViewModel.swift */,
+				42B3298525D52B030076A939 /* AddOrderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				428ECC2625D4E87600F934EC /* AppDelegate.swift in Sources */,
 				42B3298225D524730076A939 /* OrderViewModel.swift in Sources */,
 				42B3297325D5142F0076A939 /* OrderService.swift in Sources */,
+				42B3298625D52B030076A939 /* AddOrderViewModel.swift in Sources */,
 				42B3297E25D5177C0076A939 /* Order.swift in Sources */,
 				428ECC2825D4E87600F934EC /* SceneDelegate.swift in Sources */,
 				42B3296125D4EBA80076A939 /* OrdersTableViewController.swift in Sources */,

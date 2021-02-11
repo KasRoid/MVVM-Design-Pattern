@@ -11,12 +11,22 @@ import UIKit
 class AddOrderViewController: UIViewController {
     
     // MARK: - Properties
+    final private var viewModel: AddOrderViewModel
+    
     final private let tableView = UITableView()
-    final private let segmentedControl = UISegmentedControl(items: ["Small", "Medium", "Large"])
+    final private var segmentedControl: UISegmentedControl
     final private let nameTextField = UITextField()
     final private let emailTextField = UITextField()
     
     // MARK: - Lifecycle
+    init(viewModel: AddOrderViewModel) {
+        self.viewModel = viewModel
+        segmentedControl = UISegmentedControl(items: viewModel.sizes)
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -27,7 +37,7 @@ class AddOrderViewController: UIViewController {
 extension AddOrderViewController {
     @objc
     final private func didTapLeftBarButtonItem(_ sender: UIBarButtonItem) {
-        print(#function)
+        dismiss(animated: true, completion: nil)
     }
     @objc
     final private func didTapRightBarButtonItem(_ sender: UIBarButtonItem) {
@@ -35,13 +45,19 @@ extension AddOrderViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension AddOrderViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return viewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        viewModel.configure(index: indexPath.row)
+        var contentConfiguration = cell.defaultContentConfiguration()
+        contentConfiguration.text = viewModel.type
+        cell.contentConfiguration = contentConfiguration
+        return cell
     }
 }
 
@@ -60,6 +76,7 @@ extension AddOrderViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     final private func setBasics() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         segmentedControl.selectedSegmentIndex = 0
         nameTextField.placeholder = "Enter name"

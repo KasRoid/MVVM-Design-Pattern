@@ -44,7 +44,8 @@ extension OrdersTableViewController {
 extension OrdersTableViewController {
     @objc
     final private func didTapRightBarButtonItem(_ sender: UIBarButtonItem) {
-        let nextVC = AddOrderViewController()
+        let viewModel = AddOrderViewModel()
+        let nextVC = AddOrderViewController(viewModel: viewModel)
         let naviVC = UINavigationController(rootViewController: nextVC)
         naviVC.modalPresentationStyle = .fullScreen
         present(naviVC, animated: true, completion: nil)

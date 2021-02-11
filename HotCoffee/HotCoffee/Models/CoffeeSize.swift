@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CoffeeSize: String, Codable {
+enum CoffeeSize: String, Codable, CaseIterable {
     case small
     case medium
     case large
