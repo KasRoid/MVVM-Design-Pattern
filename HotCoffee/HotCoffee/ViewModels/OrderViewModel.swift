@@ -8,30 +8,30 @@
 import Foundation
 
 struct OrderViewModel {
-    private let data: [Order]
-    private var index: Int?
-    private var order: Order {
-        guard let index = index else { fatalError() }
-        return data[index]
-    }
+    private let orders: [Order]
+    private var order: Order?
     
-    init(orders data: [Order]) {
-        self.data = data
+    init(orders: [Order]) {
+        self.orders = orders
     }
 }
 
 // MARK: - Properties
 extension OrderViewModel {
     var name: String {
+        guard let order = order else { fatalError() }
         return order.name
     }
     var email: String {
+        guard let order = order else { fatalError() }
         return order.email
     }
     var type: String {
+        guard let order = order else { fatalError() }
         return order.type.rawValue
     }
     var size: String {
+        guard let order = order else { fatalError() }
         return order.size.rawValue
     }
 }
@@ -39,9 +39,9 @@ extension OrderViewModel {
 // MARK: - Helpers
 extension OrderViewModel {
     mutating func configure(index: Int) {
-        self.index = index
+        order = orders[index]
     }
     func numberOfRowsInSection() -> Int {
-        return data.count
+        return orders.count
     }
 }

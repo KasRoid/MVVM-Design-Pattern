@@ -23,15 +23,13 @@ class OrdersTableViewController: UITableViewController {
 // MARK: - Load Data
 extension OrdersTableViewController {
     final private func loadOrders() {
-        guard let url = URL(string: "https://guarded-retreat-82533.herokuapp.com/orders") else { fatalError() }
-        let resource = Resource<[Order]>(url: url)
-        OrderService.shared.load(resource: resource,
-                                 completion: { result in
+        OrderService.shared.load(resource: Order.all,
+                                 completion: { [weak self] result in
                                     switch result {
                                     case .success(let orders):
-                                        self.viewModel = OrderViewModel(orders: orders)
+                                        self?.viewModel = OrderViewModel(orders: orders)
                                         DispatchQueue.main.async {
-                                            self.tableView.reloadData()
+                                            self?.tableView.reloadData()
                                         }
                                     case .failure(let error):
                                         print(error)

@@ -10,14 +10,14 @@ import Foundation
 struct AddOrderViewModel {
     var name: String?
     var email: String?
-    var index: Int?
+    var selectedType: String?
+    var selectedSize: String?
 }
 
 // MARK: - Properties
 extension AddOrderViewModel {
-    var type: String {
-        guard let index = index else { fatalError() }
-        return CoffeeType.allCases[index].rawValue.localizedCapitalized
+    var types: [String] {
+        return CoffeeType.allCases.map { $0.rawValue.localizedCapitalized }
     }
     var sizes: [String] {
         return CoffeeSize.allCases.map { $0.rawValue.localizedCapitalized }
@@ -26,8 +26,11 @@ extension AddOrderViewModel {
 
 // MARK: - Helpers
 extension AddOrderViewModel {
-    mutating func configure(index: Int) {
-        self.index = index
+    mutating func register(name: String?, email: String?, selectedType: String?, selectedSize: String?) {
+        self.name = name
+        self.email = email
+        self.selectedType = selectedType
+        self.selectedSize = selectedSize
     }
     func numberOfRowsInSection() -> Int {
         return CoffeeType.allCases.count

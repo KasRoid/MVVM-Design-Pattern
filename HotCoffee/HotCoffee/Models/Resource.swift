@@ -9,4 +9,6 @@ import Foundation
 
 struct Resource<T: Codable> {
     let url: URL
+    var httpMethod: HttpMethod = .get
+    var httpBody: Data? = nil
 }

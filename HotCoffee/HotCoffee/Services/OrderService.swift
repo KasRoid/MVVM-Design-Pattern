@@ -18,7 +18,11 @@ class OrderService {
 
 extension OrderService {
     final func load<T>(resource: Resource<T>, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: resource.url,
+        var request = URLRequest(url: URL.coffeeOrder)
+        request.httpMethod = resource.httpMethod.rawValue
+        request.httpBody = resource.httpBody
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        URLSession.shared.dataTask(with: request,
                                    completionHandler: { data, response, error in
                                     guard let data = data, error == nil else {
                                         completion(.failure(.domainError))

@@ -41,7 +41,33 @@ extension AddOrderViewController {
     }
     @objc
     final private func didTapRightBarButtonItem(_ sender: UIBarButtonItem) {
-        print(#function)
+        guard let indexPath = tableView.indexPathForSelectedRow else { print("No Menu Selected"); return }
+        let name = nameTextField.text
+        let email = emailTextField.text
+        guard name != "", email != "" else { print("Name or email field is empty."); return }
+        let selectedSize = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)
+        let selectedType = viewModel.types[indexPath.row]
+        viewModel.register(name: name, email: email, selectedType: selectedType, selectedSize: selectedSize)
+        
+        OrderService.shared.load(resource: Order.createResource(viewModel: viewModel),
+                                 completion: { result in
+                                    switch result {
+                                    case .success(let order):
+                                        print(order)
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                 })
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension AddOrderViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
 }
 
@@ -53,10 +79,10 @@ extension AddOrderViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        viewModel.configure(index: indexPath.row)
         var contentConfiguration = cell.defaultContentConfiguration()
-        contentConfiguration.text = viewModel.type
+        contentConfiguration.text = viewModel.types[indexPath.row]
         cell.contentConfiguration = contentConfiguration
+        cell.selectionStyle = .none
         return cell
     }
 }
@@ -78,6 +104,7 @@ extension AddOrderViewController {
     final private func setBasics() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
+        tableView.delegate = self
         segmentedControl.selectedSegmentIndex = 0
         nameTextField.placeholder = "Enter name"
         emailTextField.placeholder = "Enter email"
