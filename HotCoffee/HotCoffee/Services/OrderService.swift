@@ -18,7 +18,7 @@ class OrderService {
 
 extension OrderService {
     final func load<T>(resource: Resource<T>, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        var request = URLRequest(url: URL.coffeeOrder)
+        var request = URLRequest(url: resource.url)
         request.httpMethod = resource.httpMethod.rawValue
         request.httpBody = resource.httpBody
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

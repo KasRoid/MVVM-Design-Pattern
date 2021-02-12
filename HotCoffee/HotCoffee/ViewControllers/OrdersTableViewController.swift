@@ -44,6 +44,7 @@ extension OrdersTableViewController {
     final private func didTapRightBarButtonItem(_ sender: UIBarButtonItem) {
         let viewModel = AddOrderViewModel()
         let nextVC = AddOrderViewController(viewModel: viewModel)
+        nextVC.delegate = self
         let naviVC = UINavigationController(rootViewController: nextVC)
         naviVC.modalPresentationStyle = .fullScreen
         present(naviVC, animated: true, completion: nil)
@@ -64,6 +65,13 @@ extension OrdersTableViewController {
         contentConfiguration.prefersSideBySideTextAndSecondaryText = true
         cell.contentConfiguration = contentConfiguration
         return cell
+    }
+}
+
+// MARK: - AddOrderViewControllerDelegate
+extension OrdersTableViewController: AddOrderViewControllerDelegate {
+    func placedOrder() {
+        loadOrders()
     }
 }
 

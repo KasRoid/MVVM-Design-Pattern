@@ -12,6 +12,7 @@ class AddOrderViewController: UIViewController {
     
     // MARK: - Properties
     final private var viewModel: AddOrderViewModel
+    final weak var delegate: AddOrderViewControllerDelegate?
     
     final private let tableView = UITableView()
     final private var segmentedControl: UISegmentedControl
@@ -42,6 +43,7 @@ extension AddOrderViewController {
     @objc
     final private func didTapRightBarButtonItem(_ sender: UIBarButtonItem) {
         guard let indexPath = tableView.indexPathForSelectedRow else { print("No Menu Selected"); return }
+        sender.isEnabled = false
         let name = nameTextField.text
         let email = emailTextField.text
         guard name != "", email != "" else { print("Name or email field is empty."); return }
@@ -54,8 +56,13 @@ extension AddOrderViewController {
                                     switch result {
                                     case .success(let order):
                                         print(order)
+                                        self.delegate?.placedOrder()
+                                        DispatchQueue.main.async {
+                                            self.dismiss(animated: true, completion: nil)
+                                        }
                                     case .failure(let error):
                                         print(error)
+                                        sender.isEnabled = true
                                     }
                                  })
     }
@@ -144,4 +151,9 @@ extension AddOrderViewController {
             $0.top.equalTo(nameTextField.snp.bottom).offset(12)
         }
     }
+}
+
+// MARK: - Protocols
+protocol AddOrderViewControllerDelegate: class {
+    func placedOrder()
 }
