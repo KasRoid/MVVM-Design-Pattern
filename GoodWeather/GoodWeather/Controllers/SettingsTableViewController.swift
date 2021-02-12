@@ -10,7 +10,7 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
 
     // MARK: - Properties
-    final private let viewModel = SettingsViewModel()
+    final private var viewModel = SettingsViewModel()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -19,6 +19,7 @@ class SettingsTableViewController: UITableViewController {
     
     // MARK: - Selectors
     @IBAction func didTapDoneButton(_ sender: UIBarButtonItem) {
+        viewModel.saveSelectedUnit()
         dismiss(animated: true)
     }
 }
@@ -27,7 +28,10 @@ class SettingsTableViewController: UITableViewController {
 extension SettingsTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        tableView.visibleCells.forEach { $0.accessoryType = .none }
         cell.accessoryType = .checkmark
+        let unit = Unit.allCases[indexPath.row]
+        viewModel.selectedUnit = unit
     }
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
@@ -43,6 +47,10 @@ extension SettingsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath)
         cell.textLabel?.text = viewModel.titles[indexPath.row]
+        if Unit.allCases[indexPath.row] == viewModel.selectedUnit {
+            viewModel.selectedUnit = Unit.allCases[indexPath.row]
+            cell.accessoryType = .checkmark
+        }
         return cell
     }
 }
