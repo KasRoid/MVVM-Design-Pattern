@@ -143,4 +143,4 @@ iOSInjectionProject/
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,macos,cocoapods
 
 ### Custom ###
-GoodNews/GoodNews/Models/Account.swift
+Account.swift

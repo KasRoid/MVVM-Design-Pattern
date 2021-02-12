@@ -21,6 +21,16 @@ class AddWeatherCityViewController: UIViewController {
         dismiss(animated: true)
     }
     @IBAction func didTapSaveButton(_ sender: UIButton) {
-        
+        guard let city = cityNameTextField.text else { return }
+        let resource = Resource<Weather>(url: URL.generateWeatherURL(city: city))
+        WeatherService.shared.load(resource: resource,
+                                   completion: { result in
+                                    switch result {
+                                    case .success(let weather):
+                                        print(weather)
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                   })
     }
 }
