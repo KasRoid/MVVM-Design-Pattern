@@ -8,20 +8,19 @@
 import UIKit
 
 class AddWeatherCityViewController: UIViewController {
+    // MARK: - Properties
+    @IBOutlet weak var cityNameTextField: UITextField!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
     }
-}
-
-// MARK: - UI
-extension AddWeatherCityViewController {
-    final private func setUI() {
-        setBasics()
+    
+    // MARK: - Selectors
+    @IBAction func didTapCloseButton(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
     }
-    final private func setBasics() {
+    @IBAction func didTapSaveButton(_ sender: UIButton) {
         
     }
 }

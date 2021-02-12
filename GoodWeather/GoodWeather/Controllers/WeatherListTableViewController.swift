@@ -12,16 +12,18 @@ class WeatherListTableViewController: UITableViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
     }
 }
 
-// MARK: - UI
+// MARK: - TableView DataSource
 extension WeatherListTableViewController {
-    final private func setUI() {
-        setBasics()
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
-    final private func setBasics() {
-        
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as? WeatherTableViewCell else { fatalError() }
+        cell.cityNameLabel.text = "Huston"
+        cell.temperatureLabel.text = "70°"
+        return cell
     }
 }
