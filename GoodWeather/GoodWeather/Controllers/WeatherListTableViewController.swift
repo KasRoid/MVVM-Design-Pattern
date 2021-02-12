@@ -30,7 +30,7 @@ extension WeatherListTableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as? WeatherTableViewCell else { fatalError() }
         viewModel.setWeather(index: indexPath.row)
         cell.cityNameLabel.text = viewModel.name
-        cell.temperatureLabel.text = viewModel.temperature
+        cell.temperatureLabel.text = viewModel.temperatureInCelcius
         return cell
     }
 }

@@ -21,6 +21,7 @@
 		429D0EA825D68B000023B2FF /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EA725D68B000023B2FF /* Resource.swift */; };
 		429D0EAB25D68E440023B2FF /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EAA25D68E440023B2FF /* Weather.swift */; };
 		429D0EAF25D692360023B2FF /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EAE25D692360023B2FF /* WeatherViewModel.swift */; };
+		429D0EB325D6BC850023B2FF /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EB225D6BC850023B2FF /* Double+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		429D0EA725D68B000023B2FF /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		429D0EAA25D68E440023B2FF /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		429D0EAE25D692360023B2FF /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		429D0EB225D6BC850023B2FF /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				429D0E9E25D687D20023B2FF /* URL+Extensions.swift */,
+				429D0EB225D6BC850023B2FF /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429D0EB325D6BC850023B2FF /* Double+Extensions.swift in Sources */,
 				429D0EA825D68B000023B2FF /* Resource.swift in Sources */,
 				429D0EA525D68AC60023B2FF /* WeatherService.swift in Sources */,
 				429D0E9525D680770023B2FF /* WeatherTableViewCell.swift in Sources */,

@@ -17,8 +17,8 @@ extension WeatherViewModel {
     var name: String {
         return weather?.name ?? ""
     }
-    var temperature: String {
-        let temperature = weather?.temperature.current ?? 0
+    var temperatureInCelcius: String {
+        let temperature = weather?.temperature.current.formatAsCelcius() ?? ""
         let result = "\(temperature)°"
         return result
     }
