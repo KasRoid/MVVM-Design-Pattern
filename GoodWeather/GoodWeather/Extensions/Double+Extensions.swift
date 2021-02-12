@@ -8,7 +8,7 @@
 import Foundation
 
 extension Double {
-    func formatAsCelcius() -> String {
+    func formatAsCelsius() -> String {
         let result = self - 273.15
         return String(format: "%.0f", result)
     }

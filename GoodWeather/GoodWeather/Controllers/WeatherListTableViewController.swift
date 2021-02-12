@@ -15,9 +15,26 @@ class WeatherListTableViewController: UITableViewController {
     // MARK: - Lifecycle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        switch segue.identifier {
+        case "AddWeatherCityViewController":
+            prepareSegueForAddWeatherCityViewController(segue: segue)
+        case "SettingsTableViewController":
+            prepareSegueForSettingsTableViewController(segue: segue)
+        default:
+            fatalError()
+        }
+    }
+}
+
+// MARK: - Helpers
+extension WeatherListTableViewController {
+    final private func prepareSegueForAddWeatherCityViewController(segue: UIStoryboardSegue) {
         guard let naviVC = segue.destination as? UINavigationController,
               let destVC = naviVC.viewControllers.first as? AddWeatherCityViewController else { return }
         destVC.delegate = self
+    }
+    final private func prepareSegueForSettingsTableViewController(segue: UIStoryboardSegue) {
+        
     }
 }
 
@@ -30,7 +47,7 @@ extension WeatherListTableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as? WeatherTableViewCell else { fatalError() }
         viewModel.setWeather(index: indexPath.row)
         cell.cityNameLabel.text = viewModel.name
-        cell.temperatureLabel.text = viewModel.temperatureInCelcius
+        cell.temperatureLabel.text = viewModel.temperatureInCelsius
         return cell
     }
 }
