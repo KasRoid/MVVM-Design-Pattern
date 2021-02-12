@@ -14,6 +14,7 @@
 		425B2C1B25D6140300A0B873 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2C1A25D6140300A0B873 /* Stock.swift */; };
 		425B2C1E25D6143F00A0B873 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2C1D25D6143F00A0B873 /* WebService.swift */; };
 		425B2C2225D614CB00A0B873 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2C2125D614CB00A0B873 /* URL+Extensions.swift */; };
+		425B2C2725D6188C00A0B873 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B2C2625D6188C00A0B873 /* StockViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		425B2C1A25D6140300A0B873 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		425B2C1D25D6143F00A0B873 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		425B2C2125D614CB00A0B873 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		425B2C2625D6188C00A0B873 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		425B2C0725D6112A00A0B873 /* StocksApp */ = {
 			isa = PBXGroup;
 			children = (
+				425B2C2525D6186A00A0B873 /* ViewModels */,
 				425B2C1925D613EE00A0B873 /* Models */,
 				425B2C1825D613DA00A0B873 /* Services */,
 				425B2C2025D614BE00A0B873 /* Extensions */,
@@ -100,6 +103,14 @@
 				425B2C2125D614CB00A0B873 /* URL+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		425B2C2525D6186A00A0B873 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				425B2C2625D6188C00A0B873 /* StockViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				425B2C0B25D6112A00A0B873 /* ContentView.swift in Sources */,
 				425B2C0925D6112A00A0B873 /* StocksAppApp.swift in Sources */,
 				425B2C2225D614CB00A0B873 /* URL+Extensions.swift in Sources */,
+				425B2C2725D6188C00A0B873 /* StockViewModel.swift in Sources */,
 				425B2C1E25D6143F00A0B873 /* WebService.swift in Sources */,
 				425B2C1B25D6140300A0B873 /* Stock.swift in Sources */,
 			);
