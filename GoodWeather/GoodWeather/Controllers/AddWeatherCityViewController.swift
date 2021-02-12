@@ -9,13 +9,15 @@ import UIKit
 
 class AddWeatherCityViewController: UIViewController {
     // MARK: - Properties
+    weak var delegate: AddWeatherCityViewControllerDelegate?
+    
     @IBOutlet weak var cityNameTextField: UITextField!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     // MARK: - Selectors
     @IBAction func didTapCloseButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
@@ -27,10 +29,16 @@ class AddWeatherCityViewController: UIViewController {
                                    completion: { result in
                                     switch result {
                                     case .success(let weather):
-                                        print(weather)
+                                        self.delegate?.didSaveWeather(weather: weather)
+                                        self.dismiss(animated: true)
                                     case .failure(let error):
                                         print(error)
                                     }
                                    })
     }
+}
+
+// MARK: - Protocols
+protocol AddWeatherCityViewControllerDelegate: class {
+    func didSaveWeather(weather: Weather)
 }
