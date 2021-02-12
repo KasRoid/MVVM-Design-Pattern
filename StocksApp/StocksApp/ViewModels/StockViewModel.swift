@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct StockViewModel {
+class StockViewModel: ObservableObject {
     
-    private let stocks: [Stock]
-    var stock: Stock?
+    @Published
+    final var stocks: [Stock]
+    @Published
+    final var searchTerm = ""
+    final var stock: Stock?
     
-    // MARK: - Lifecycle
     init(stocks: [Stock]) {
         self.stocks = stocks
     }
@@ -20,16 +22,33 @@ struct StockViewModel {
 
 // MARK: - Properties
 extension StockViewModel {
-    var symbol: String {
+    final var symbol: String {
         return stock?.symbol.uppercased() ?? ""
     }
-    var description: String {
+    final var description: String {
         return stock?.description ?? ""
     }
-    var price: String {
+    final var price: String {
         return String(format: "%.2f", stock?.price ?? 0)
     }
-    var change: String {
+    final var change: String {
         return stock?.change ?? ""
+    }
+}
+
+// MARK: - Helpers
+extension StockViewModel {
+    final func fetchStocks() {
+        WebService.shared.getStocks(completion: { result in
+            switch result {
+            case .success(let stocks):
+                print(#function, stocks)
+                DispatchQueue.main.async {
+                    self.stocks = stocks
+                }
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
 }
