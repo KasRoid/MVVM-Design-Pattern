@@ -19,9 +19,13 @@ struct Weather: Decodable {
     
     struct Temperature: Decodable {
         let current: Double
+        let minimumTemperature: Double
+        let maximumTemperature: Double
         
         private enum CodingKeys: String, CodingKey {
             case current = "temp"
+            case minimumTemperature = "temp_min"
+            case maximumTemperature = "temp_max"
         }
     }
 }

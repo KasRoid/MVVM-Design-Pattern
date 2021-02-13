@@ -8,5 +8,5 @@
 import Foundation
 
 struct AddWeatherCityViewModel {
-    var name: String = ""
+    var city: String = ""
 }

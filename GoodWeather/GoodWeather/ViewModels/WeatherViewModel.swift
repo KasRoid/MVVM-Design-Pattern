@@ -21,20 +21,10 @@ extension WeatherViewModel {
     var temperature: String {
         switch unit {
         case .celsius:
-            return temperatureInCelsius
+            return "\(weather?.temperature.current.formatAsCelsius() ?? "")°"
         case .fahrenheit:
-            return temperatureInFahrenheit
+            return "\(weather?.temperature.current.formatAsFahrenheit() ?? "")°"
         }
-    }
-    private var temperatureInCelsius: String {
-        let temperature = weather?.temperature.current.formatAsCelsius() ?? ""
-        let result = "\(temperature)°"
-        return result
-    }
-    private var temperatureInFahrenheit: String {
-        let temperature = weather?.temperature.current.formatAsFahrenheit() ?? ""
-        let result = "\(temperature)°"
-        return result
     }
 }
 
@@ -42,6 +32,9 @@ extension WeatherViewModel {
 extension WeatherViewModel {
     func numberOfRowsInSection() -> Int {
         return weathers.count
+    }
+    func getWeather(index: Int) -> Weather {
+        return weathers[index]
     }
     mutating func addWeather(_ weather: Weather) {
         weathers.append(weather)

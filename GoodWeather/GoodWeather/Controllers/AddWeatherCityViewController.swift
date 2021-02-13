@@ -9,11 +9,12 @@ import UIKit
 
 class AddWeatherCityViewController: UIViewController {
     // MARK: - Properties
+    static let identifier = "AddWeatherCityViewController"
     weak var delegate: AddWeatherCityViewControllerDelegate?
     private var viewModel = AddWeatherCityViewModel()
     
     @IBOutlet weak var cityNameTextField: BindingTextField! {
-        didSet { cityNameTextField.binding { [weak self] in self?.viewModel.name = $0 } }
+        didSet { cityNameTextField.binding { [weak self] in self?.viewModel.city = $0 } }
     }
     
     // MARK: - Lifecycle
@@ -26,8 +27,7 @@ class AddWeatherCityViewController: UIViewController {
         dismiss(animated: true)
     }
     @IBAction func didTapSaveButton(_ sender: UIButton) {
-        guard let city = cityNameTextField.text else { return }
-        let resource = Resource<Weather>(url: URL.generateWeatherURL(city: city))
+        let resource = Resource<Weather>(url: URL.generateWeatherURL(city: viewModel.city))
         WeatherService.shared.load(resource: resource,
                                    completion: { result in
                                     switch result {

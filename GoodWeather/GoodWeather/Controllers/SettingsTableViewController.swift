@@ -10,6 +10,7 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
 
     // MARK: - Properties
+    static let identifier = "SettingsTableViewController"
     final weak var delegate: SettingsTableViewControllerDelegate?
     final private var viewModel = SettingsViewModel()
 

@@ -27,14 +27,20 @@ class WeatherListTableViewController: UITableViewController {
 // MARK: - Helpers
 extension WeatherListTableViewController {
     final private func prepareForSegue(segue: UIStoryboardSegue) {
-        guard let naviVC = segue.destination as? UINavigationController else { return }
         switch segue.identifier {
-        case "AddWeatherCityViewController":
-            guard let destVC = naviVC.viewControllers.first as? AddWeatherCityViewController else { return }
+        case AddWeatherCityViewController.identifier:
+            guard let naviVC = segue.destination as? UINavigationController,
+                  let destVC = naviVC.viewControllers.first as? AddWeatherCityViewController else { return }
             destVC.delegate = self
-        case "SettingsTableViewController":
-            guard let destVC = naviVC.viewControllers.first as? SettingsTableViewController else { return }
+        case SettingsTableViewController.identifier:
+            guard let naviVC = segue.destination as? UINavigationController,
+                  let destVC = naviVC.viewControllers.first as? SettingsTableViewController else { return }
             destVC.delegate = self
+        case WeatherDetailsViewController.identifier:
+            guard let destVC = segue.destination as? WeatherDetailsViewController,
+                  let index = tableView.indexPathForSelectedRow?.row else { return }
+            let weather = viewModel.getWeather(index: index)
+            destVC.viewModel.setWeather(weather: weather)
         default:
             fatalError()
         }
