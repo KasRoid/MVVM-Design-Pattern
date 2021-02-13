@@ -30,6 +30,7 @@
 		429D0ECA25D77D710023B2FF /* BindingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EC925D77D710023B2FF /* BindingTextField.swift */; };
 		429D0ECE25D7A4D20023B2FF /* WeatherDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0ECD25D7A4D20023B2FF /* WeatherDetailsViewController.swift */; };
 		429D0ED125D7A7AC0023B2FF /* WeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0ED025D7A7AC0023B2FF /* WeatherDetailsViewModel.swift */; };
+		429D0ED425D7B70A0023B2FF /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0ED325D7B70A0023B2FF /* Dynamic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		429D0EC925D77D710023B2FF /* BindingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTextField.swift; sourceTree = "<group>"; };
 		429D0ECD25D7A4D20023B2FF /* WeatherDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewController.swift; sourceTree = "<group>"; };
 		429D0ED025D7A7AC0023B2FF /* WeatherDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsViewModel.swift; sourceTree = "<group>"; };
+		429D0ED325D7B70A0023B2FF /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				429D0E9925D687610023B2FF /* Account.swift */,
+				429D0ED325D7B70A0023B2FF /* Dynamic.swift */,
 				429D0EA725D68B000023B2FF /* Resource.swift */,
 				429D0EAA25D68E440023B2FF /* Weather.swift */,
 				429D0EB925D6C98C0023B2FF /* Unit.swift */,
@@ -263,6 +266,7 @@
 				429D0EB325D6BC850023B2FF /* Double+Extensions.swift in Sources */,
 				429D0ECA25D77D710023B2FF /* BindingTextField.swift in Sources */,
 				429D0EC525D77D220023B2FF /* AddWeatherCityViewModel.swift in Sources */,
+				429D0ED425D7B70A0023B2FF /* Dynamic.swift in Sources */,
 				429D0EA825D68B000023B2FF /* Resource.swift in Sources */,
 				429D0EA525D68AC60023B2FF /* WeatherService.swift in Sources */,
 				429D0EBA25D6C98C0023B2FF /* Unit.swift in Sources */,
