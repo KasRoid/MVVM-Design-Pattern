@@ -26,6 +26,8 @@
 		429D0EBA25D6C98C0023B2FF /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EB925D6C98C0023B2FF /* Unit.swift */; };
 		429D0EBD25D6CB050023B2FF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EBC25D6CB050023B2FF /* SettingsViewModel.swift */; };
 		429D0EC125D75FA80023B2FF /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EC025D75FA80023B2FF /* PreferenceManager.swift */; };
+		429D0EC525D77D220023B2FF /* AddWeatherCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EC425D77D220023B2FF /* AddWeatherCityViewModel.swift */; };
+		429D0ECA25D77D710023B2FF /* BindingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D0EC925D77D710023B2FF /* BindingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		429D0EB925D6C98C0023B2FF /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		429D0EBC25D6CB050023B2FF /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		429D0EC025D75FA80023B2FF /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		429D0EC425D77D220023B2FF /* AddWeatherCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherCityViewModel.swift; sourceTree = "<group>"; };
+		429D0EC925D77D710023B2FF /* BindingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 				421BF04525D674A2005BFB8E /* Controllers */,
 				429D0EBF25D75F010023B2FF /* Managers */,
 				429D0EA325D68AB20023B2FF /* Services */,
+				429D0EC825D77D560023B2FF /* Bindings */,
 				429D0E9D25D687BB0023B2FF /* Extensions */,
 				421BF04425D67495005BFB8E /* Supports */,
 				421BF03D25D67479005BFB8E /* Info.plist */,
@@ -110,9 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				421BF03525D67479005BFB8E /* Main.storyboard */,
-				429D0E8D25D677750023B2FF /* WeatherListTableViewController.swift */,
 				429D0E9025D677F70023B2FF /* AddWeatherCityViewController.swift */,
 				429D0EB525D6C0450023B2FF /* SettingsTableViewController.swift */,
+				429D0E8D25D677750023B2FF /* WeatherListTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -156,8 +161,9 @@
 		429D0EAD25D6922B0023B2FF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				429D0EAE25D692360023B2FF /* WeatherViewModel.swift */,
+				429D0EC425D77D220023B2FF /* AddWeatherCityViewModel.swift */,
 				429D0EBC25D6CB050023B2FF /* SettingsViewModel.swift */,
+				429D0EAE25D692360023B2FF /* WeatherViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -168,6 +174,14 @@
 				429D0EC025D75FA80023B2FF /* PreferenceManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		429D0EC825D77D560023B2FF /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				429D0EC925D77D710023B2FF /* BindingTextField.swift */,
+			);
+			path = Bindings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +255,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				429D0EB325D6BC850023B2FF /* Double+Extensions.swift in Sources */,
+				429D0ECA25D77D710023B2FF /* BindingTextField.swift in Sources */,
+				429D0EC525D77D220023B2FF /* AddWeatherCityViewModel.swift in Sources */,
 				429D0EA825D68B000023B2FF /* Resource.swift in Sources */,
 				429D0EA525D68AC60023B2FF /* WeatherService.swift in Sources */,
 				429D0EBA25D6C98C0023B2FF /* Unit.swift in Sources */,

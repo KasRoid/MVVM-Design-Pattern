@@ -10,8 +10,11 @@ import UIKit
 class AddWeatherCityViewController: UIViewController {
     // MARK: - Properties
     weak var delegate: AddWeatherCityViewControllerDelegate?
+    private var viewModel = AddWeatherCityViewModel()
     
-    @IBOutlet weak var cityNameTextField: UITextField!
+    @IBOutlet weak var cityNameTextField: BindingTextField! {
+        didSet { cityNameTextField.binding { [weak self] in self?.viewModel.name = $0 } }
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
