@@ -8,7 +8,7 @@
 import Foundation
 
 struct WeatherViewModel {
-    private var weathers: [Weather] = []
+    private(set) var weathers: [Weather] = []
     private var weather: Weather?
     var unit: Unit = .celsius
 }
@@ -40,7 +40,7 @@ extension WeatherViewModel {
     mutating func addWeather(_ weather: Weather) {
         weathers.append(weather)
     }
-    mutating func setWeather(index: Int) {
-        weather = weathers[index]
+    mutating func setWeather(weather: Weather) {
+        self.weather = weather
     }
 }

@@ -11,12 +11,24 @@ class WeatherListTableViewController: UITableViewController {
     
     // MARK: - Properties
     private var viewModel: WeatherViewModel
+    private var dataSource: TableViewDataSource<WeatherTableViewCell, Weather>!
     
     // MARK: - Lifecycle
     required init?(coder: NSCoder) {
         viewModel = WeatherViewModel()
         super.init(coder: coder)
         viewModel.unit = PreferenceManager.shared.loadUnitData()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        dataSource = TableViewDataSource(identifier: WeatherTableViewCell.identifier,
+                                         items: viewModel.weathers,
+                                         configure: { [weak self] cell, weather in
+                                            self?.viewModel.setWeather(weather: weather)
+                                            cell.cityNameLabel.text = self?.viewModel.name.value
+                                            cell.temperatureLabel.text = self?.viewModel.temperature.value
+                                         })
+        tableView.dataSource = dataSource
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -47,24 +59,11 @@ extension WeatherListTableViewController {
     }
 }
 
-// MARK: - TableView DataSource
-extension WeatherListTableViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRowsInSection()
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as? WeatherTableViewCell else { fatalError() }
-        viewModel.setWeather(index: indexPath.row)
-        cell.cityNameLabel.text = viewModel.name.value
-        cell.temperatureLabel.text = viewModel.temperature.value
-        return cell
-    }
-}
-
 // MARK: - AddWeatherCityViewControllerDelegate
 extension WeatherListTableViewController: AddWeatherCityViewControllerDelegate {
     func didSaveWeather(weather: Weather) {
         viewModel.addWeather(weather)
+        dataSource.updateItems(viewModel.weathers)
         tableView.reloadData()
     }
 }

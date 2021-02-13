@@ -36,7 +36,9 @@ class AddWeatherCityViewController: UIViewController {
                                         self.delegate?.didSaveWeather(weather: weather)
                                         self.dismiss(animated: true)
                                     case .failure(let error):
-                                        sender.isEnabled = true
+                                        DispatchQueue.main.async {
+                                            sender.isEnabled = true
+                                        }
                                         print(error)
                                     }
                                    })
