@@ -10,31 +10,34 @@ import UIKit
 class WeatherListTableViewController: UITableViewController {
     
     // MARK: - Properties
-    private var viewModel = WeatherViewModel()
+    private var viewModel: WeatherViewModel
     
     // MARK: - Lifecycle
+    required init?(coder: NSCoder) {
+        viewModel = WeatherViewModel()
+        super.init(coder: coder)
+        viewModel.unit = PreferenceManager.shared.loadUnitData()
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        switch segue.identifier {
-        case "AddWeatherCityViewController":
-            prepareSegueForAddWeatherCityViewController(segue: segue)
-        case "SettingsTableViewController":
-            prepareSegueForSettingsTableViewController(segue: segue)
-        default:
-            fatalError()
-        }
+        prepareForSegue(segue: segue)
     }
 }
 
 // MARK: - Helpers
 extension WeatherListTableViewController {
-    final private func prepareSegueForAddWeatherCityViewController(segue: UIStoryboardSegue) {
-        guard let naviVC = segue.destination as? UINavigationController,
-              let destVC = naviVC.viewControllers.first as? AddWeatherCityViewController else { return }
-        destVC.delegate = self
-    }
-    final private func prepareSegueForSettingsTableViewController(segue: UIStoryboardSegue) {
-        
+    final private func prepareForSegue(segue: UIStoryboardSegue) {
+        guard let naviVC = segue.destination as? UINavigationController else { return }
+        switch segue.identifier {
+        case "AddWeatherCityViewController":
+            guard let destVC = naviVC.viewControllers.first as? AddWeatherCityViewController else { return }
+            destVC.delegate = self
+        case "SettingsTableViewController":
+            guard let destVC = naviVC.viewControllers.first as? SettingsTableViewController else { return }
+            destVC.delegate = self
+        default:
+            fatalError()
+        }
     }
 }
 
@@ -47,7 +50,7 @@ extension WeatherListTableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as? WeatherTableViewCell else { fatalError() }
         viewModel.setWeather(index: indexPath.row)
         cell.cityNameLabel.text = viewModel.name
-        cell.temperatureLabel.text = viewModel.temperatureInCelsius
+        cell.temperatureLabel.text = viewModel.temperature
         return cell
     }
 }
@@ -56,6 +59,14 @@ extension WeatherListTableViewController {
 extension WeatherListTableViewController: AddWeatherCityViewControllerDelegate {
     func didSaveWeather(weather: Weather) {
         viewModel.addWeather(weather)
+        tableView.reloadData()
+    }
+}
+
+// MARK: - SettingsTableViewControllerDelegate
+extension WeatherListTableViewController: SettingsTableViewControllerDelegate {
+    func didUpdateUnit(unit: Unit) {
+        viewModel.unit = unit
         tableView.reloadData()
     }
 }

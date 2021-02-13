@@ -9,22 +9,15 @@ import Foundation
 
 struct SettingsViewModel {
     
-    private var units: Unit = .celsius
+    private var unit: Unit = .celsius
     
     // MARK: - Properties
     var titles: [String] {
         return Unit.allCases.map{ $0.rawValue }
     }
     var selectedUnit: Unit {
-        get {
-            if let rawValue = UserDefaults.standard.string(forKey: "unit"),
-               let unit = Unit(rawValue: rawValue)  {
-                return unit
-            } else {
-                return units
-            }
-        }
-        set { units = newValue }
+        get { PreferenceManager.shared.loadUnitData() }
+        set { unit = newValue }
     }
 }
 
@@ -34,6 +27,6 @@ extension SettingsViewModel {
         return Unit.allCases.count
     }
     func saveSelectedUnit() {
-        UserDefaults.standard.setValue(units.rawValue, forKey: "unit")
+        PreferenceManager.shared.saveUnitData(unit: unit)
     }
 }

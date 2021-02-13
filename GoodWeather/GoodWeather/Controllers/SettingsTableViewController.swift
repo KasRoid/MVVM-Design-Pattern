@@ -10,6 +10,7 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
 
     // MARK: - Properties
+    final weak var delegate: SettingsTableViewControllerDelegate?
     final private var viewModel = SettingsViewModel()
 
     // MARK: - Lifecycle
@@ -20,6 +21,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Selectors
     @IBAction func didTapDoneButton(_ sender: UIBarButtonItem) {
         viewModel.saveSelectedUnit()
+        delegate?.didUpdateUnit(unit: viewModel.selectedUnit)
         dismiss(animated: true)
     }
 }
@@ -53,4 +55,9 @@ extension SettingsTableViewController {
         }
         return cell
     }
+}
+
+// MARK: - Protocols
+protocol SettingsTableViewControllerDelegate: class {
+    func didUpdateUnit(unit: Unit)
 }

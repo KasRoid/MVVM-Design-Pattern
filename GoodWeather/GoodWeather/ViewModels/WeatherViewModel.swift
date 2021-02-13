@@ -10,6 +10,7 @@ import Foundation
 struct WeatherViewModel {
     private var weathers: [Weather] = []
     private var weather: Weather?
+    var unit: Unit = .celsius
 }
 
 // MARK: - Properties
@@ -17,8 +18,21 @@ extension WeatherViewModel {
     var name: String {
         return weather?.name ?? ""
     }
-    var temperatureInCelsius: String {
+    var temperature: String {
+        switch unit {
+        case .celsius:
+            return temperatureInCelsius
+        case .fahrenheit:
+            return temperatureInFahrenheit
+        }
+    }
+    private var temperatureInCelsius: String {
         let temperature = weather?.temperature.current.formatAsCelsius() ?? ""
+        let result = "\(temperature)°"
+        return result
+    }
+    private var temperatureInFahrenheit: String {
+        let temperature = weather?.temperature.current.formatAsFahrenheit() ?? ""
         let result = "\(temperature)°"
         return result
     }
