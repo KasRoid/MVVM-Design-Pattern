@@ -21,14 +21,15 @@ class WeatherDetailsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabels()
+        bindViewModel()
+        viewModel.reloadData()
     }
 
     // MARK: - Helpers
-    final func setLabels() {
-        cityNameLabel.text = viewModel.name
-        temperatureLabel.text = viewModel.temperature
-        minimumTemperatureLabel.text = viewModel.minimumTemperature
-        maximumTemperatureLabel.text = viewModel.maximumTemperature
+    final func bindViewModel() {
+        viewModel.name.bind { self.cityNameLabel.text = $0 }
+        viewModel.temperature.bind { self.temperatureLabel.text = $0 }
+        viewModel.minimumTemperature.bind { self.minimumTemperatureLabel.text = $0 }
+        viewModel.maximumTemperature.bind { self.maximumTemperatureLabel.text = $0 }
     }
 }

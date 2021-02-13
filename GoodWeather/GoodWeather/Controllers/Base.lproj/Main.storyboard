@@ -75,6 +75,7 @@
                                     <constraints>
                                         <constraint firstItem="1Bz-Zc-IBn" firstAttribute="centerY" secondItem="dPm-Z0-vFq" secondAttribute="centerY" id="23T-n8-W0f"/>
                                         <constraint firstItem="pSA-V2-sMG" firstAttribute="centerY" secondItem="dPm-Z0-vFq" secondAttribute="centerY" id="Ofa-Ie-YeU"/>
+                                        <constraint firstItem="pSA-V2-sMG" firstAttribute="leading" secondItem="1Bz-Zc-IBn" secondAttribute="trailing" priority="1" constant="240" id="hMa-uw-BGC"/>
                                         <constraint firstAttribute="trailing" secondItem="pSA-V2-sMG" secondAttribute="trailing" constant="20" id="ruM-fB-KbA"/>
                                         <constraint firstItem="1Bz-Zc-IBn" firstAttribute="leading" secondItem="dPm-Z0-vFq" secondAttribute="leading" constant="24" id="uGp-ce-eyW"/>
                                     </constraints>

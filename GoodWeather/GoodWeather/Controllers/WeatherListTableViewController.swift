@@ -40,7 +40,7 @@ extension WeatherListTableViewController {
             guard let destVC = segue.destination as? WeatherDetailsViewController,
                   let index = tableView.indexPathForSelectedRow?.row else { return }
             let weather = viewModel.getWeather(index: index)
-            destVC.viewModel.setWeather(weather: weather)
+            destVC.viewModel.configure(weather: weather, unit: viewModel.unit)
         default:
             fatalError()
         }
@@ -55,8 +55,8 @@ extension WeatherListTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as? WeatherTableViewCell else { fatalError() }
         viewModel.setWeather(index: indexPath.row)
-        cell.cityNameLabel.text = viewModel.name
-        cell.temperatureLabel.text = viewModel.temperature
+        cell.cityNameLabel.text = viewModel.name.value
+        cell.temperatureLabel.text = viewModel.temperature.value
         return cell
     }
 }

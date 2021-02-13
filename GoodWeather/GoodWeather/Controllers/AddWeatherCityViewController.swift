@@ -27,6 +27,7 @@ class AddWeatherCityViewController: UIViewController {
         dismiss(animated: true)
     }
     @IBAction func didTapSaveButton(_ sender: UIButton) {
+        sender.isEnabled = false
         let resource = Resource<Weather>(url: URL.generateWeatherURL(city: viewModel.city))
         WeatherService.shared.load(resource: resource,
                                    completion: { result in
@@ -35,6 +36,7 @@ class AddWeatherCityViewController: UIViewController {
                                         self.delegate?.didSaveWeather(weather: weather)
                                         self.dismiss(animated: true)
                                     case .failure(let error):
+                                        sender.isEnabled = true
                                         print(error)
                                     }
                                    })

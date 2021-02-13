@@ -15,15 +15,16 @@ struct WeatherViewModel {
 
 // MARK: - Properties
 extension WeatherViewModel {
-    var name: String {
-        return weather?.name ?? ""
+    var name: Dynamic<String> {
+        return weather?.name ?? Dynamic("")
     }
-    var temperature: String {
+    var temperature: Dynamic<String> {
+        let value = weather?.temperature.current.value ?? 0
         switch unit {
         case .celsius:
-            return "\(weather?.temperature.current.formatAsCelsius() ?? "")°"
+            return Dynamic("\(value.formatAsCelsius())°")
         case .fahrenheit:
-            return "\(weather?.temperature.current.formatAsFahrenheit() ?? "")°"
+            return Dynamic("\(value.formatAsFahrenheit())°")
         }
     }
 }

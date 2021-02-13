@@ -12,36 +12,46 @@ struct WeatherDetailsViewModel {
     private var weather: Weather?
     private var unit: Unit = .celsius
     
-    var name: String {
-        return weather?.name ?? ""
-    }
-    var temperature: String {
-        switch unit {
-        case .celsius:
-            return "\(weather?.temperature.current.formatAsCelsius() ?? "")°"
-        case .fahrenheit:
-            return "\(weather?.temperature.current.formatAsFahrenheit() ?? "")°"
-        }
-    }
-    var minimumTemperature: String {
-        switch unit {
-        case .celsius:
-            return "\(weather?.temperature.minimumTemperature.formatAsCelsius() ?? "")°"
-        case .fahrenheit:
-            return "\(weather?.temperature.minimumTemperature.formatAsFahrenheit() ?? "")°"
-        }
-    }
-    var maximumTemperature: String {
-        switch unit {
-        case .celsius:
-            return "\(weather?.temperature.maximumTemperature.formatAsCelsius() ?? "")°"
-        case .fahrenheit:
-            return "\(weather?.temperature.maximumTemperature.formatAsFahrenheit() ?? "")°"
-        }
-    }
+    var name = Dynamic("")
+    var temperature = Dynamic("")
+    var minimumTemperature = Dynamic("")
+    var maximumTemperature = Dynamic("")
     
     // MARK: - Helpers
-    mutating func setWeather(weather: Weather?) {
+    mutating func configure(weather: Weather?, unit: Unit) {
         self.weather = weather
+        self.unit = unit
+    }
+    mutating func reloadData() {
+        updateName()
+        updateTemperature()
+        updateMinimumTemperature()
+        updateMaximumTemperature()
+    }
+}
+
+extension WeatherDetailsViewModel {
+    private mutating func updateName() {
+        name.value = weather?.name.value ?? ""
+    }
+    private mutating func updateTemperature() {
+        let value = weather?.temperature.current.value ?? 0
+        temperature.value = calculateTemperature(value: value)
+    }
+    private mutating func updateMinimumTemperature() {
+        let value = weather?.temperature.minimumTemperature.value ?? 0
+        minimumTemperature.value = calculateTemperature(value: value)
+    }
+    private mutating func updateMaximumTemperature() {
+        let value = weather?.temperature.maximumTemperature.value ?? 0
+        maximumTemperature.value = calculateTemperature(value: value)
+    }
+    private func calculateTemperature(value: Double) -> String {
+        switch unit {
+        case .celsius:
+            return Dynamic("\(value.formatAsCelsius())°").value
+        case .fahrenheit:
+            return Dynamic("\(value.formatAsFahrenheit())°").value
+        }
     }
 }

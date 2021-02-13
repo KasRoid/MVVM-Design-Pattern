@@ -8,19 +8,32 @@
 import Foundation
 
 struct Weather: Decodable {
-    
-    let name: String
+    let name: Dynamic<String>
     let temperature: Temperature
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = Dynamic(try container.decode(String.self, forKey: .name))
+        temperature = try container.decode(Temperature.self, forKey: .temperature)
+    }
     
     private enum CodingKeys: String, CodingKey {
         case name
         case temperature = "main"
     }
     
+    // MARK: - Temperature
     struct Temperature: Decodable {
-        let current: Double
-        let minimumTemperature: Double
-        let maximumTemperature: Double
+        let current: Dynamic<Double>
+        let minimumTemperature: Dynamic<Double>
+        let maximumTemperature: Dynamic<Double>
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            current = try Dynamic(container.decode(Double.self, forKey: .current))
+            minimumTemperature = try Dynamic(container.decode(Double.self, forKey: .minimumTemperature))
+            maximumTemperature = try Dynamic(container.decode(Double.self, forKey: .maximumTemperature))
+        }
         
         private enum CodingKeys: String, CodingKey {
             case current = "temp"
